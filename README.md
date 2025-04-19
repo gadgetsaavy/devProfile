@@ -1,2 +1,2 @@
 # devProfile
-Developer Profule
+Developer Profile
