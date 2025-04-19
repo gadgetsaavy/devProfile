@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en">
 <head>
-  <!-- Meta and SEO setup -->
+  <!-- Meta setup for mobile and SEO -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Detailed breakdown of the FlashLoan Arbitrage Engine built by Chris Hirschauer." />
-  <title>FlashLoan Arbitrage Engine | Chris Hirschauer</title>
+  <meta name="description" content="Solidity-focused developer portfolio for DeFi engineer Chris Hirschauer." />
+  <title>Chris Hirschauer | Blockchain Developer</title>
 
-  <!-- Favicon and Font -->
-  <link rel="icon" href="/favicon.ico" />
+  <!-- Open Graph tags for better link sharing -->
+  <meta property="og:title" content="Chris Hirschauer | Blockchain Developer" />
+  <meta property="og:description" content="Solidity dev with a DeFi-first mind. Clean code, big wins." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gadgetsaavy.github.io/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Google Font: Fira Code -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CDN Setup -->
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,76 +30,152 @@
             mono: ['Fira Code', 'monospace'],
           },
           colors: {
-            primary: '#7BAFD4',  // UNC Carolina Blue
-            bgDark: '#1A1A1A',   // Dark background
+            primary: '#7BAFD4', // Carolina Blue
+            bgDark: '#1A1A1A',  // Dark Grey
           },
         },
       },
     };
   </script>
+
+  <style>
+    /* Parrot Security Image as Background */
+    .background-img {
+      background-image: url('https://i.ibb.co/MxxzHzYV/parrot-security-2.png');
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.5;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Reusable text box styling */
+    .text-box {
+      background-color: rgba(17, 24, 39, 0.8); /* gray-900 w/ 80% opacity */
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
-<body class="bg-white text-black dark:bg-bgDark dark:text-white font-mono">
-  <!-- BACK BUTTON -->
-  <div class="p-6">
-    <a href="/" class="text-primary hover:underline text-sm">&larr; Back to Home</a>
+
+<body class="bg-white text-black dark:bg-bgDark dark:text-white font-mono scroll-smooth">
+  <!-- Parrot Image Background -->
+  <div class="background-img"></div>
+
+  <!-- Dark Mode Toggle -->
+  <div class="absolute top-5 right-5 z-50">
+    <button id="toggleDark" class="bg-gray-200 text-black dark:bg-gray-700 dark:text-white px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-600 text-sm transition-all">
+      Toggle Dark
+    </button>
   </div>
 
-  <!-- PROJECT HERO SECTION -->
-  <section class="text-center px-6 pt-10 pb-6">
-    <h1 class="text-4xl font-bold text-primary">FlashLoan Arbitrage Engine</h1>
-    <p class="mt-3 text-lg text-gray-700 dark:text-gray-300">
-      DeFi revenue generator built for speed, accuracy, and serious scalability.
-    </p>
+  <script>
+    const toggleDark = document.getElementById('toggleDark');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark');
+    }
+    toggleDark.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+  <!-- HERO SECTION -->
+  <section class="h-screen flex flex-col justify-center items-center text-center px-4">
+    <div class="text-box max-w-2xl">
+      <h1 class="text-5xl sm:text-7xl font-bold text-primary drop-shadow-lg">C. Hirschauer</h1>
+      <p class="text-xl sm:text-2xl mt-4 text-gray-300">Blockchain Strategist & Solidity Developer</p>
+      <a href="#projects" class="mt-10 inline-block px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 shadow-lg">
+        👨‍🔬 My Projects 👩‍🔬
+      </a>
+    </div>
+
+    <!-- Profile Image -->
+    <div class="mt-10 flex justify-center">
+      <div class="backdrop-blur-md bg-black/30 border border-gray-700 rounded-2xl p-2 shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 hover:rotate-1">
+        <img 
+          src="https://i.ibb.co/BKLtkPSB/me.png" 
+          alt="Developer Card"
+          class="w-80 h-auto rounded-xl"
+        />
+      </div>
+    </div>
   </section>
 
-  <!-- CASE STUDY CONTENT SECTION -->
-  <section class="max-w-4xl mx-auto px-6 pb-20 space-y-12">
-    
-    <!-- STRATEGY SECTION -->
-    <div>
-      <h2 class="text-2xl font-semibold text-primary mb-2">🧠 The Strategy</h2>
-      <p class="text-gray-800 dark:text-gray-200 leading-relaxed">
-        This bot leverages flash loans (Aave, Uniswap V3) to perform triangular and exchange arbitrage across multiple pools.
-        It dynamically selects the best path using a Bellman-Ford algorithm off-chain, triggers execution via a smart contract,
-        and wraps everything in MEV-boosted bundles.
+  <!-- ABOUT ME SECTION -->
+  <section class="py-20 px-6 max-w-4xl mx-auto" id="about">
+    <div class="text-box">
+      <h2 class="mx-auto mb-10 text-center text-3xl sm:text-4xl font-bold text-primary bg-gray-100 dark:bg-gray-800 dark:text-primary rounded-xl px-6 py-3 shadow-md w-fit">
+        ⚙️ Skills
+      </h2>
+      <p class="text-lg leading-relaxed text-gray-200">
+        I'm a detail-obsessed Solidity engineer focused on high-performance DeFi strategies, security-first architecture, and clean code.
+        I don’t build toys — I build systems that flip profits. I am available as a freelancer for hire. I currently offer a landing page built
+        in 24hrs for $150.
       </p>
     </div>
+  </section>
 
-    <!-- TECH STACK SECTION -->
-    <div>
-      <h2 class="text-2xl font-semibold text-primary mb-2">🛠 Tech Stack</h2>
-      <ul class="list-disc list-inside text-gray-800 dark:text-gray-200 space-y-1">
-        <li>Solidity (smart contracts)</li>
-        <li>Hardhat for deployment/test suite</li>
-        <li>Python off-chain bot (Bellman-Ford pathfinder)</li>
-        <li>Uniswap V2/V3 SDKs</li>
-        <li>Flashbots + MEV Boost</li>
-        <li>Foundry</li>
-      </ul>
+  <!-- SKILLS SECTION -->
+  <section class="py-20 bg-gray-100 dark:bg-gray-800 px-6" id="skills">
+    <div class="max-w-6xl mx-auto text-box">
+      <h2 class="mx-auto mb-10 text-center text-3xl sm:text-4xl font-bold text-primary bg-gray-100 dark:bg-gray-800 dark:text-primary rounded-xl px-6 py-3 shadow-md w-fit">⚙️ Skills ⚙️</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-center text-gray-200">
+        <div class="hover:text-primary">Solidity</div>
+        <div class="hover:text-primary">Hardhat</div>
+        <div class="hover:text-primary">JavaScript</div>
+        <div class="hover:text-primary">Python</div>
+        <div class="hover:text-primary">Node.js</div>
+        <div class="hover:text-primary">Tailwind CSS</div>
+        <div class="hover:text-primary">Git & GitHub</div>
+        <div class="hover:text-primary">Web Development</div>
+        <div class="hover:text-primary">Web3</div>
+        <div class="hover:text-primary">Finance</div>
+        <div class="hover:text-primary">OSINT</div>
+        <div class="hover:text-primary">Penetration Testing</div>
+      </div>
     </div>
+  </section>
 
-    <!-- RESULTS SECTION -->
-    <div>
-      <h2 class="text-2xl font-semibold text-primary mb-2">📈 Results</h2>
-      <p class="text-gray-800 dark:text-gray-200 leading-relaxed">
-        In simulation and small testnet runs, the engine generated over 12% net profit per 5ETH flash loan with under 3s average execution time.
-        The system is built for high-frequency operation, and gas-optimized Solidity logic ensures cost efficiency at scale.
-      </p>
+  <!-- PROJECTS SECTION -->
+  <section class="py-20 px-6 max-w-6xl mx-auto" id="projects">
+    <div class="text-box">
+      <h2 class="mx-auto mb-10 text-center text-3xl sm:text-4xl font-bold text-primary bg-gray-100 dark:bg-gray-800 dark:text-primary rounded-xl px-6 py-3 shadow-md w-fit">
+        🧬 Projects
+      </h2>
+      <!-- Project Entry -->
+      <div class="mb-8">
+        <h3 class="text-2xl font-semibold text-white mb-2">FlashLoan Arbitrage Engine</h3>
+        <p class="text-gray-200 mb-4">
+          A real-time arbitrage bot using Uniswap V3 and Aave flash loans, capable of generating revenue via multi-token, multi-pool MEV-boosted strategies.
+        </p>
+        <a href="/projects/flashloan.html" class="text-primary hover:underline">View Case Study →</a>
+      </div>
     </div>
+  </section>
 
-    <!-- GITHUB LINK SECTION -->
-    <div>
-      <h2 class="text-2xl font-semibold text-primary mb-2">📂 Code Repository</h2>
-      <a href="https://github.com/gadgetsaavy/flashloan-engine"
-         class="text-primary hover:underline" target="_blank">
-        github.com/gadgetsaavy/flashloan-engine
+  <!-- CONTACT SECTION -->
+  <section class="py-20 px-6 text-center" id="contact">
+    <div class="inline-block text-box">
+      <h2 class="mx-auto mb-6 text-center text-3xl sm:text-4xl font-bold text-primary bg-gray-100 dark:bg-gray-800 dark:text-primary rounded-xl px-6 py-3 shadow-md w-fit">
+        📬 Let's Connect
+      </h2>
+      <p class="text-gray-200 mb-6">Want to collaborate or hire me? Let's talk.</p>
+      <a href="mailto:chris@gadgetsaavy.dev" class="inline-block px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:scale-105 transition-all">
+        ✉️ Email Me
       </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-    Built by Chris Hirschauer | &copy; 2025
+  <footer class="text-center py-10 text-sm text-gray-400">
+    Quality Code. Built to Win. Engineered for Dominance.
   </footer>
 </body>
 </html>
