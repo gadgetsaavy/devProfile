@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Detailed breakdown of the FlashLoan Arbitrage Engine built by Chris Hirschauer." />
+  <title>FlashLoan Arbitrage Engine | Chris Hirschauer</title>
+
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['Fira Code', 'monospace'],
+          },
+          colors: {
+            primary: '#1db954',
+            bgDark: '#0a0a0a',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-bgDark text-white dark:bg-white dark:text-black font-mono">
+  <!-- Back button -->
+  <div class="p-6">
+    <a href="/" class="text-primary hover:underline">&larr; Back to Home</a>
+  </div>
+
+  <!-- Project Hero -->
+  <section class="text-center px-6 pt-10 pb-6">
+    <h1 class="text-4xl font-bold text-primary">FlashLoan Arbitrage Engine</h1>
+    <p class="mt-3 text-lg text-gray-400 dark:text-gray-700">DeFi revenue generator built for speed, accuracy, and serious scalability.</p>
+  </section>
+
+  <!-- Case Study Content -->
+  <section class="max-w-4xl mx-auto px-6 pb-20 space-y-10">
+    <!-- Description -->
+    <div>
+      <h2 class="text-2xl font-semibold text-primary mb-2">🧠 The Strategy</h2>
+      <p class="text-gray-300 dark:text-gray-700 leading-relaxed">
+        This bot leverages flash loans (Aave, Uniswap V3) to perform triangular and exchange arbitrage across multiple pools. It dynamically selects the best path using a Bellman-Ford algorithm off-chain, triggers execution via a smart contract, and wraps everything in MEV-boosted bundles.
+      </p>
+    </div>
+
+    <!-- Tech Stack -->
+    <div>
+      <h2 class="text-2xl font-semibold text-primary mb-2">🛠 Tech Stack</h2>
+      <ul class="list-disc list-inside text-gray-300 dark:text-gray-700">
+        <li>Solidity (smart contracts)</li>
+        <li>Hardhat for deployment/test suite</li>
+        <li>Python off-chain bot (Bellman-Ford pathfinder)</li>
+        <li>Uniswap V2/V3 SDKs</li>
+        <li>Flashbots + MEV Boost</li>
+      </ul>
+    </div>
+
+    <!-- Results -->
+    <div>
+      <h2 class="text-2xl font-semibold text-primary mb-2">📈 Results</h2>
+      <p class="text-gray-300 dark:text-gray-700 leading-relaxed">
+        In simulation and small testnet runs, the engine generated over 12% net profit per 5ETH flash loan with under 3s average execution time. The system is built for high-frequency operation and gas-optimized Solidity logic ensures cost efficiency at scale.
+      </p>
+    </div>
+
+    <!-- Code Repo -->
+    <div>
+      <h2 class="text-2xl font-semibold text-primary mb-2">📂 Code Repository</h2>
+      <a href="https://github.com/gadgetsaavy/flashloan-engine" class="text-primary hover:underline" target="_blank">github.com/gadgetsaavy/flashloan-engine</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-600">
+    Built by Chris Hirschauer | &copy; 2025
+  </footer>
+</body>
+</html>
